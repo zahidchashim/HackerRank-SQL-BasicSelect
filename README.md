@@ -102,3 +102,34 @@ SELECT CITY, STATE
 FROM STATION;
 ```
 ---
+### 7) Weather Observation Station 3
+Query a list of CITY names from STATION for cities that have an even ID number. Print the results in any order, but exclude duplicates from the answer.
+
+Query:
+```SQL
+SELECT DISTINCT CITY 
+FROM STATION 
+WHERE MOD(ID,2) = 0
+ORDER BY CITY;
+```
+---
+### 8) Weather Observation Station 4
+Find the difference between the total number of CITY entries in the table and the number of distinct CITY entries in the table.
+
+Query:
+```SQL
+SELECT
+    COUNT(CITY) - COUNT(DISTINCT CITY)
+FROM STATION;
+```
+---
+### 9) Weather Observation Station 5
+Query the two cities in STATION with the shortest and longest CITY names, as well as their respective lengths (i.e.: number of characters in the name). If there is more than one smallest or largest city, choose the one that comes first when ordered alphabetically.
+
+Query:
+```SQL
+SELECT MIN(CITY), LENGTH(MIN(CITY)) FROM STATION 
+WHERE LENGTH(CITY) = (SELECT MIN(LENGTH(CITY)) FROM STATION);
+SELECT MAX(CITY), LENGTH(MAX(CITY)) FROM STATION 
+WHERE LENGTH(CITY) = (SELECT MAX(LENGTH(CITY)) FROM STATION);
+```
